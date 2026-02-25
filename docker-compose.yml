@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  workforce-hub:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=change-this-to-a-secure-secret
+      - DB_PATH=/app/data/workforce.db
+    volumes:
+      - workforce-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  workforce-data:
